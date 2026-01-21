@@ -1,16 +1,21 @@
 class Solution {
     public int minCostToMoveChips(int[] position) {
-        int even = 0;
-        int odd = 0;
+        int minCost = Integer.MAX_VALUE;
 
-        for (int p : position) {
-            if (p % 2 == 0) {
-                even++;
-            } else {
-                odd++;
+        for (int target : position) {
+            int cost = 0;
+
+            for (int p : position) {
+                int dist = Math.abs(p - target);
+
+                if (dist % 2 == 1) {
+                    cost++;  
+                }
             }
+
+            minCost = Math.min(minCost, cost);
         }
 
-        return Math.min(even, odd);
+        return minCost;
     }
 }
