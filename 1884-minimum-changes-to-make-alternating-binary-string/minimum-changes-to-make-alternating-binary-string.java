@@ -12,7 +12,6 @@ class Solution {
                 changes2++;
             }
         }
-
         return Math.min(changes1, changes2);
     }
 }
