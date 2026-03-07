@@ -1,8 +1,5 @@
-import java.util.*;
-
 class Solution {
     public List<Integer> getRow(int rowIndex) {
-
         List<Integer> row = new ArrayList<>();
 
         long value = 1;
@@ -12,7 +9,6 @@ class Solution {
             value = value * (rowIndex - k + 1) / k;
             row.add((int) value);
         }
-
         return row;
     }
 }
