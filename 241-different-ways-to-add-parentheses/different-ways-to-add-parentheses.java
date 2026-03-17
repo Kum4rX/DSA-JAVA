@@ -1,37 +1,24 @@
 class Solution {
-    public List<Integer> diffWaysToCompute(String expression) {
-        List<Integer> result = new ArrayList<>();
+    public List<Integer> diffWaysToCompute(String e) {
+        List<Integer> r = new ArrayList<>();
 
-        if (!expression.contains("+") && !expression.contains("-") && !expression.contains("*")) {
-            result.add(Integer.parseInt(expression));
-            return result;
+        if (!e.contains("+") && !e.contains("-") && !e.contains("*")) {
+            r.add(Integer.parseInt(e));
+            return r;
         }
-        for (int i = 0; i < expression.length(); i++) {
-            char c = expression.charAt(i);
+        for (int i = 0; i < e.length(); i++) {
+            char c = e.charAt(i);
             if (c == '+' || c == '-' || c == '*') {
-                String left = expression.substring(0, i);
-                String right = expression.substring(i + 1);
-                
-                List<Integer> leftResults = diffWaysToCompute(left);
-                List<Integer> rightResults = diffWaysToCompute(right);
+                List<Integer> l = diffWaysToCompute(e.substring(0, i));
+                List<Integer> ri = diffWaysToCompute(e.substring(i + 1));
 
-                for (int leftVal : leftResults) {
-                    for (int rightVal : rightResults) {
-                        switch (c) {
-                            case '+':
-                                result.add(leftVal + rightVal);
-                                break;
-                            case '-':
-                                result.add(leftVal - rightVal);
-                                break;
-                            case '*':
-                                result.add(leftVal * rightVal);
-                                break;
-                        }
-                    }
+                for (int a : l) for (int b : ri) {
+                    if (c == '+') r.add(a + b);
+                    else if (c == '-') r.add(a - b);
+                    else r.add(a * b);
                 }
             }
         }
-        return result;
+        return r;
     }
 }
