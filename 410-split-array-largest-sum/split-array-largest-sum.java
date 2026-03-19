@@ -1,5 +1,5 @@
 class Solution {
-    public int splitArray(int[] nums, int k) {
+    public int splitArray(int[] nums, int m) {
         int start = 0;
         int end = 0;
 
@@ -21,7 +21,7 @@ class Solution {
                     sum += num;
                 }
             }
-            if (pieces > k) {
+            if (pieces > m) {
                 start = mid + 1;
             }
             else {
